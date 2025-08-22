@@ -48,7 +48,7 @@ export default function CreatePage() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold my-8">Add new interpretation</h2>
+      <h2 className="text-2xl font-bold my-8">Add new definition</h2>
 
       <form className="flex gap-3 flex-col" onSubmit={handleSubmit}>
         <input
@@ -62,7 +62,7 @@ export default function CreatePage() {
 
         <textarea
           name="interpretation"
-          placeholder="Interpretation"
+          placeholder="Definition"
           className="py-1 px-4 border rounded-md resize-none"
           value={formData.interpretation}
           onChange={handleInputChange}
@@ -73,7 +73,7 @@ export default function CreatePage() {
           type="submit"
           disabled={isLoading}
         >
-          {isLoading ? "Adding..." : "Add interpretation"}
+          {isLoading ? "Adding..." : "Add definition"}
         </button>
       </form>
       {error && <p className="text-red-500 mt-4"> {error} </p>}

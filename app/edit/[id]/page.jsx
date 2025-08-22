@@ -175,7 +175,7 @@ export default function EditPage({ params }) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold my-8">Edit interpretation</h2>
+      <h2 className="text-2xl font-bold my-8">Edit definition</h2>
 
       <form className="flex gap-3 flex-col" onSubmit={handleSubmit}>
         <input
@@ -189,7 +189,7 @@ export default function EditPage({ params }) {
 
         <textarea
           name="interpretation"
-          placeholder="Interpretation"
+          placeholder="Definition"
           className="py-1 px-4 border rounded-md resize-none"
           value={formData.interpretation}
           onChange={handleInputChange}
@@ -200,7 +200,7 @@ export default function EditPage({ params }) {
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? "Updating" : "Edit interpretation"}
+          {isLoading ? "Updating" : "Edit definition"}
         </button>
       </form>
       {error && <p className="text-red-500 mt-4">{error}</p>}
