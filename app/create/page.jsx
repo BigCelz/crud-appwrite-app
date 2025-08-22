@@ -31,9 +31,10 @@ export default function CreatePage() {
     try {
       const response = await fetch("/api/interpretations", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: { "Content-type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       if (!response.ok) {
         throw new Error("Failed to create interpretation");
       }
