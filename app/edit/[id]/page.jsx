@@ -1,100 +1,3 @@
-// "use client";
-// import { useRouter } from "next/navigation";
-// import React, { useEffect, useState } from "react";
-
-// export default function EditPage({ params }) {
-//   const router = useRouter();
-//   const [formData, setFormData] = useState({
-//     term: "",
-//     interpretation: "",
-//   });
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await fetch(`/api/interpretations/${params.id}`);
-//         if (!response.ok) {
-//           throw new Error("Failed to fetch interprretation");
-//         }
-//         const data = await response.json();
-//         setFormData(
-//             {term: data.interpretation.term, interpretation: data.interpretation.interpretation}
-//         )
-//       } catch (error) {
-//         setError("Failed to load interpretation");
-//       }
-//     };
-//     fetchData();
-//   }, []);
-
-//   const handleInputChange = (e) => {
-//     setFormData((prevData) => ({
-//       ...prevData,
-//       [e.target.name]: e.target.value,
-//     }));
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//      if (!formData.term || !formData.interpretation) {
-//       setError("Please fill in all the fields");
-//       return;
-//     }
-//     setError(null);
-//     setIsLoading(true);
-
-//     try {
-//       const response = await fetch(`/api/interpretations/${params.id}`, {
-//         method: "PUT",
-//         headers: { "content-type": "application/json" },
-//         body: JSON.stringify(formData),
-//       });
-//       if (!response.ok) {
-//         throw new Error("Failed to update interpretation");
-//       }
-//       router.push("/");
-//     } catch (error) {
-//       console.log(error);
-//       setError("Something went wrong, please try again later");
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   }
-
-//   return (
-//     <div>
-//       <h2 className="text-2xl font-bold my-8">Edit interpretation</h2>
-
-//       <form className="flex gap-3 flex-col" onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           name="term"
-//           placeholder="Term"
-//           className="py-1 px-4 border rounded-md"
-//           value={formData.term}
-//           onChange={handleInputChange}
-//         />
-
-//         <textarea
-//           name="interpretation"
-//           placeholder="Interpretation"
-//           className="py-1 px-4 border rounded-md resize-none"
-//           value={formData.interpretation}
-//           onChange={handleInputChange}
-//         ></textarea>
-
-//         <button className="bg-black text-white mt-5 px-4 py-1 rounded cursor-pointer" disabled={isLoading} type="submit">
-//          {isLoading ? "Updating" : "Edit interpretation"} 
-//         </button>
-//       </form>
-//       {error && <p className="text-red-500 mt-4"> {error} </p>}
-//     </div>
-//   );
-// }
-
-
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -124,7 +27,7 @@ export default function EditPage({ params }) {
       try {
         const response = await fetch(`/api/interpretations/${id}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch interpretation");
+          throw new Error("Failed to fetch entry");
         }
         const data = await response.json();
         setFormData({
@@ -132,7 +35,7 @@ export default function EditPage({ params }) {
           interpretation: data.interpretation.interpretation,
         });
       } catch (error) {
-        setError("Failed to load interpretation");
+        setError("Failed to load entry");
       }
     };
 
@@ -162,7 +65,7 @@ export default function EditPage({ params }) {
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
-        throw new Error("Failed to update interpretation");
+        throw new Error("Failed to update entry");
       }
       router.push("/");
     } catch (error) {
@@ -175,13 +78,13 @@ export default function EditPage({ params }) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold my-8">Edit definition</h2>
+      <h2 className="text-2xl font-bold my-8">Edit Clinical Entry</h2>
 
       <form className="flex gap-3 flex-col" onSubmit={handleSubmit}>
         <input
           type="text"
           name="term"
-          placeholder="Term"
+          placeholder="Quiz"
           className="py-1 px-4 border rounded-md"
           value={formData.term}
           onChange={handleInputChange}
@@ -189,18 +92,18 @@ export default function EditPage({ params }) {
 
         <textarea
           name="interpretation"
-          placeholder="Definition"
+          placeholder="Answer"
           className="py-1 px-4 border rounded-md resize-none"
           value={formData.interpretation}
           onChange={handleInputChange}
         ></textarea>
 
         <button
-          className="bg-black text-white mt-5 px-4 py-1 rounded cursor-pointer"
+          className="bg-black hover:bg-gray-900 text-white mt-5 px-4 py-1 rounded cursor-pointer whitespace-nowrap"
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? "Updating" : "Edit definition"}
+          {isLoading ? "Updating" : "Update entry"}
         </button>
       </form>
       {error && <p className="text-red-500 mt-4">{error}</p>}

@@ -44,7 +44,7 @@ export default function Home() {
       {error && <p className="py-4 text-red-500">{error}</p>}
 
       {isLoading ? (
-        <p>Loading interpretations...</p>
+        <p>Loading...</p>
       ) : interpretations.length > 0 ? (
         interpretations.map((i) => (
           <div className="p-4 my-2 rounded-md border-b leading-8" key={i.$id}>
@@ -54,14 +54,14 @@ export default function Home() {
             <div className="flex gap-4 mt-4 justify-end">
               <Link
                 href={`/edit/${i.$id}`}
-                className="bg-slate-200 px-4 py-2 rounded-md uppercase text-sm font-bold tracking-widest"
+                className="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md uppercase text-sm font-bold tracking-widest cursor-pointer"
               >
-                Edit
+                Update
               </Link>
 
               <button
                 onClick={() => handleDelete(i.$id)}
-                className="bg-red-500 text-white px-4 py-2 rounded-md uppercase text-sm font-bold tracking-widest cursor-pointer"
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md uppercase text-sm font-bold tracking-widest cursor-pointer"
               >
                 Delete
               </button>

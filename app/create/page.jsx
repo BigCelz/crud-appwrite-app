@@ -31,12 +31,12 @@ export default function CreatePage() {
     try {
       const response = await fetch("/api/interpretations", {
         method: "POST",
-        headers: { "Content-type": "application/json" },
+        headers: { "Content-TYpe": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create interpretation");
+        throw new Error("Failed to create entry");
       }
       router.push("/");
     } catch (error) {
@@ -49,7 +49,7 @@ export default function CreatePage() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold my-8">Add new definition</h2>
+      <h2 className="text-2xl font-bold my-8">New Clinical Entry</h2>
 
       <form className="flex gap-3 flex-col" onSubmit={handleSubmit}>
         <input
@@ -57,24 +57,24 @@ export default function CreatePage() {
           name="term"
           value={formData.term}
           onChange={handleInputChange}
-          placeholder="Term"
+          placeholder="Quiz"
           className="py-1 px-4 border rounded-md"
         />
 
         <textarea
           name="interpretation"
-          placeholder="Definition"
+          placeholder="Answer/Explanation"
           className="py-1 px-4 border rounded-md resize-none"
           value={formData.interpretation}
           onChange={handleInputChange}
         ></textarea>
 
         <button
-          className="bg-black text-white mt-5 px-4 py-1 rounded cursor-pointer"
+          className="bg-black hover:bg-gray-900 text-white mt-5 px-4 py-1 rounded cursor-pointer whitespace-nowrap"
           type="submit"
           disabled={isLoading}
         >
-          {isLoading ? "Adding..." : "Add definition"}
+          {isLoading ? "Adding..." : "Add Entry"}
         </button>
       </form>
       {error && <p className="text-red-500 mt-4"> {error} </p>}
