@@ -93,7 +93,7 @@ export default function EditPage({ params }) {
         <textarea
           name="interpretation"
           placeholder="Answer"
-          className="py-1 px-4 border rounded-md resize-none"
+          className="py-1 px-4 border rounded-md resize-none h-60"
           value={formData.interpretation}
           onChange={handleInputChange}
         ></textarea>

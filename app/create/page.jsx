@@ -64,7 +64,7 @@ export default function CreatePage() {
         <textarea
           name="interpretation"
           placeholder="Answer/Explanation"
-          className="py-1 px-4 border rounded-md resize-none"
+          className="py-1 px-4 border rounded-md resize-none h-60"
           value={formData.interpretation}
           onChange={handleInputChange}
         ></textarea>
