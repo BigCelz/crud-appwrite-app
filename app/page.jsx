@@ -68,9 +68,7 @@ export default function Home() {
             </div>
           </div>
         ))
-      ) : (
-        <p>No interpretations found</p>
-      )}
+      ) : null}
     </div>
   );
 }
